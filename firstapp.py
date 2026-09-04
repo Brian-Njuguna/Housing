@@ -19,7 +19,6 @@ from sklearn.compose import ColumnTransformer
 
 st.set_page_config(
     page_title="California Housing Analysis",
-    page_icon="🏠",
     layout="wide"
 )
 
@@ -177,11 +176,7 @@ strat_test_set = strat_test_set.drop(
 housing = strat_train_set.copy()
 
 
-# ============================================================
-# TITLE
-# ============================================================
-
-st.title("🏠 California Housing Dataset")
+st.title("California Housing Dataset")
 
 st.write(
     "An interactive exploration and machine learning "
@@ -189,9 +184,6 @@ st.write(
 )
 
 
-# ============================================================
-# DATASET OVERVIEW
-# ============================================================
 
 st.header("Dataset Overview")
 
@@ -220,9 +212,6 @@ with col3:
     )
 
 
-# ============================================================
-# DATA PREVIEW
-# ============================================================
 
 col1, col2 = st.columns([2, 1])
 
@@ -247,9 +236,6 @@ with col2:
     )
 
 
-# ============================================================
-# CALIFORNIA HOUSING MAP
-# ============================================================
 
 st.header(
     "California Housing Prices by Geographic Location"
@@ -297,21 +283,19 @@ with col2:
     st.write("This visualization shows:")
 
     st.write(
-        "- 📍 Location of housing districts"
+        "-  Location of housing districts"
     )
 
     st.write(
-        "- 👥 Population represented by point size"
+        "-  Population represented by point size"
     )
 
     st.write(
-        "- 💰 House value represented by color"
+        "-  House value represented by color"
     )
 
 
-# ============================================================
-# INCOME VS HOUSE VALUE
-# ============================================================
+
 
 st.header(
     "Does Income Influence House Values in California?"
@@ -364,9 +348,7 @@ with col2:
     )
 
 
-# ============================================================
-# FEATURE IMPORTANCE
-# ============================================================
+
 
 st.header("Top 8 Feature Importances")
 
@@ -417,9 +399,6 @@ st.plotly_chart(
 )
 
 
-# ============================================================
-# LOAD TRAINED MODEL AND PIPELINE
-# ============================================================
 
 model = joblib.load(MODEL_PATH)
 
@@ -432,11 +411,9 @@ rmse_interval = joblib.load(
 )
 
 
-# ============================================================
-# HOUSE PRICE PREDICTION
-# ============================================================
 
-st.header("🏡 Predict House Value")
+
+st.header(" Predict House Value")
 
 
 st.write(
@@ -505,9 +482,7 @@ with col2:
     )
 
 
-# ============================================================
-# CREATE INPUT DATAFRAME
-# ============================================================
+
 
 input_data = pd.DataFrame({
 
@@ -545,9 +520,7 @@ input_data = pd.DataFrame({
 })
 
 
-# ============================================================
-# PREPARE INPUT
-# ============================================================
+
 
 prepared_input_arr = prediction_pipeline.transform(
     input_data
@@ -565,10 +538,6 @@ prepared_input = prepared_input_arr[
     :, selected_indices
 ]
 
-
-# ============================================================
-# PREDICTION
-# ============================================================
 
 if st.button(
     "Predict House Value",
@@ -590,11 +559,7 @@ if st.button(
     )
 
 
-# ============================================================
-# MODEL PERFORMANCE
-# ============================================================
-
-st.header("📊 Model Performance")
+st.header("Model Performance")
 
 
 lower = rmse_interval[0]
